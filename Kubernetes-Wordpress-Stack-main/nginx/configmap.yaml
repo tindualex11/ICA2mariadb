@@ -1,0 +1,14 @@
+# nginx-proxy/configmap.yaml
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: nginx-config
+  namespace: nginx
+data:
+  default.conf: |
+    server {
+        listen 80;
+        location / {
+            proxy_pass http://wordpress.wordpress.svc.cluster.local;
+        }
+    }
